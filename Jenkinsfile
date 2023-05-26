@@ -66,7 +66,7 @@ pipeline {
       withCredentials([usernamePassword(credentialsId: 'docker', passwordVariable: 'docker_pass', usernameVariable: 'docker_user')]) {
 	  sh 'docker login -u ${docker_user} -p ${docker_pass}'
       	  sh 'docker push mbreddy507/ansibledeploy:$BUILD_NUMBER'
-	  sh 'docker run -d -p 8050:8050 --name SpringbootApp$BUILD_NUMBER mbreddy507/ansibledeploy:$BUILD_NUMBER'
+	  sh 'docker run -d -p 8050:8050 --name SpringbootApp1 mbreddy507/ansibledeploy:$BUILD_NUMBER'
     }
     }
   }	  
