@@ -13,14 +13,14 @@ pipeline {
     SONAR_HOME = "${tool name: 'sonar-scanner', type: 'hudson.plugins.sonar.SonarRunnerInstallation'}"
   }  
   stages {
-   //stage ('Maven Build') {
-     // steps {
-       // script {
-        //  mvn= tool (name: 'Maven', type: 'maven') + '/bin/mvn'
-        //}
-        //sh "${mvn} clean package"
-      //}
-    //}
+   stage ('Maven Build') {
+      steps {
+        script {
+          mvn= tool (name: 'Maven', type: 'maven') + '/bin/mvn'
+        }
+        sh "${mvn} clean package"
+      }
+    }
     stage('Artifactory_Configuration') {
       steps {
         script {
@@ -32,12 +32,12 @@ pipeline {
         }			                      
       }
     }
-    stage('Execute_Maven') {
-	  steps {
-	    script {
-		  rtMaven.run pom: 'pom.xml', goals: 'clean package', buildInfo: buildInfo
-        }			                      
-      }
+    //stage('Execute_Maven') {
+	  //steps {
+	    //script {
+		  //rtMaven.run pom: 'pom.xml', goals: 'clean package', buildInfo: buildInfo
+        //}			                      
+      //}
     }	
     stage('SonarQube_Analysis') {
       steps {
