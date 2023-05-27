@@ -90,7 +90,8 @@ pipeline {
       steps {
        //ansiblePlaybook credentialsId: 'ans-server', inventory: 'inventory', playbook: 'ansibleplay.yml', tags: 'stop_container,delete_container'
        // Above command used to run the playbook with specified tags mentioned in the tags section.	
-	 ansiblePlaybook credentialsId: 'ans-server', inventory: 'inventory', playbook: 'ansibleplay.yml'     
+	 //ansiblePlaybook credentialsId: 'ans-server', inventory: 'inventory', playbook: 'ansibleplay.yml'     
+   ansiblePlaybook credentialsId: 'ans-server', disableHostKeyChecking: true, installation: 'ansible', inventory: 'inventory', playbook: 'ansibleplay.yml'
         }
       }	  	  
   }
